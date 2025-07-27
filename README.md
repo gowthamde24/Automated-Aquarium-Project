@@ -2,9 +2,9 @@
 
 ![AutomatedAquariumWebsite](graphics/dashboard.png)
 
+# Wiring Diagram
 ![Wiring Diagram](graphics/Wiringdiagram.png)
 
-## Getting Started
 ## Project Structure
 
 This repository contains two main parts:
