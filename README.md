@@ -2,7 +2,7 @@
 
 ![AutomatedAquariumWebsite](graphics/dashboard.png)
 
-![Wiring Diagram](graphics/Wiring diagram.png)
+![Wiring Diagram](graphics/Wiringdiagram.png)
 
 ## Getting Started
 ## Project Structure
