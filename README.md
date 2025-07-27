@@ -1,8 +1,8 @@
 # Automated Aquarium website
 
-![AutomatedAquariumWebsite](/Users/gowthamreddys/Documents/ISE_Project/automated-aquarium-web/graphics/dashboard.png)
+![AutomatedAquariumWebsite](graphics/dashboard.png)
 
-![Wiring Diagram](/Users/gowthamreddys/Documents/ISE_Project/automated-aquarium-web/graphics/Wiring diagram.png)
+![Wiring Diagram](graphics/Wiring diagram.png)
 
 ## Getting Started
 ## Project Structure
