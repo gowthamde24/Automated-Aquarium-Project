@@ -1,0 +1,40 @@
+name: Blog Post Notification
+
+on:
+  push:
+    branches:
+      # - main
+      - devBranch
+    paths:
+      - 'src/content/blog/**'
+
+jobs:
+  process-and-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Need at least 2 commits to detect changes
+      
+      - name: Extract blog metadata
+        id: metadata
+        uses: ./.github/actions/extract-blog-metadata
+        with:
+          blog_directory: 'src/content/blog'
+
+      # Add this debug step
+      # - name: Debug metadata
+      #   run: |
+      #     echo "Metadata output: ${{ steps.metadata.outputs.metadata }}"
+      
+      - name: Send notifications if new posts found
+        if: ${{ steps.metadata.outputs.metadata != '[]' }}
+        uses: ./.github/actions/send-blog-notifications
+        with:
+          blog_metadata: ${{ steps.metadata.outputs.metadata }}
+          database_url: ${{ secrets.DATABASE_URL }}
+          resend_api_key: ${{ secrets.RESEND_API_KEY }}
+          site_url: 'https://automated-aquarium.com'
+          batch_size: '50'
+          from_email: 'newsletter-no-reply@automated-aquarium.com'

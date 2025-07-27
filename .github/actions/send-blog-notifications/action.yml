@@ -1,0 +1,52 @@
+name: 'Send Blog Notifications'
+description: 'Send email notifications about new blog posts to subscribers'
+author: 'Joserra13'
+
+inputs:
+  blog_metadata:
+    description: 'JSON string containing blog post metadata'
+    required: true
+  database_url:
+    description: 'PostgreSQL database connection string'
+    required: true
+  resend_api_key:
+    description: 'API key for Resend email service'
+    required: true
+  site_url:
+    description: 'URL of your blog website'
+    required: true
+    default: 'https://automated-aquarium.com'
+  batch_size:
+    description: 'Number of emails to send in each batch'
+    required: false
+    default: '50'
+  from_email:
+    description: 'Email address to send from'
+    required: false
+    default: 'newsletter-no-reply@automated-aquarium.com'
+
+outputs:
+  success_count:
+    description: 'Number of emails successfully sent'
+  error_count:
+    description: 'Number of emails that failed to send'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install dependencies
+      run: npm install pg resend
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - name: Run notification script
+      id: notify
+      run: node ${{ github.action_path }}/index.js
+      shell: bash
+      env:
+        INPUT_BLOG_METADATA: ${{ inputs.blog_metadata }}
+        DATABASE_URL: ${{ inputs.database_url }}
+        RESEND_API_KEY: ${{ inputs.resend_api_key }}
+        INPUT_SITE_URL: ${{ inputs.site_url }}
+        INPUT_BATCH_SIZE: ${{ inputs.batch_size }}
+        INPUT_FROM_EMAIL: ${{ inputs.from_email }}

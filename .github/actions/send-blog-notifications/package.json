@@ -1,0 +1,19 @@
+{
+  "name": "send-blog-notifications",
+  "version": "1.0.0",
+  "description": "GitHub Action to send blog post notifications via Resend",
+  "main": "index.js",
+  "keywords": [
+    "github-actions",
+    "blog",
+    "notifications",
+    "resend",
+    "postgres"
+  ],
+  "author": "Joserra13",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^8.16.0",
+    "resend": "^4.5.1"
+  }
+}
