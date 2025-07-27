@@ -4,7 +4,7 @@
 
 # Wiring Diagram
 ![Wiring Diagram](graphics/Wiringdiagram.png)
-
+The following diagram illustrates the physical connections between the ESP32 microcontroller and the various hardware components, including the temperature sensor, pH sensor, servo motor for the feeder, and the LED light unit. This represents the complete hardware setup for the project.
 ## Project Structure
 
 This repository contains two main parts:
