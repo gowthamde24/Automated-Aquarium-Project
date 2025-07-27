@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { SocialIcons } from "./Social-Icons";
+import { FaUserCircle } from 'react-icons/fa'; // Import the user icon
 
 // Define the Header component
 export default function Header() {
@@ -15,48 +16,36 @@ export default function Header() {
   };
 
   return (
-    <header className="text-white py-4 sticky top-0 z-50 font-[family-name:var(--font-geist-sans)] bg-gray-900">
+    <header className="text-white py-4 sticky top-0 z-50 font-[family-name:var(--font-geist-sans)] bg-gray-900 border-b border-gray-700">
       {/* Header container */}
-      <div className="container mx-auto px-4 flex justify-center items-center md:justify-between relative">
+      <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Website title with icon */}
         <Link href="/" className="flex items-center gap-2">
           <Image src="/main-icon.svg" alt="Main Icon" width={32} height={32} />
-          <h1 className="text-xl font-semibold">automatedAquarium</h1>
+          <h1 className="text-xl font-semibold">AutomatedAquarium</h1>
         </Link>
-        {/* Navigation menu */}
-        <nav className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-          <ul className="flex gap-x-6">
-            {/* Navigation links */}
-            <li>
-              <Link href="/" className="hover:text-gray-300">
-                Home
-              </Link>
-            </li>
-            {/* <li>
-              <Link href="/streaming" className="hover:text-gray-300">
-                Streaming
-              </Link>
-            </li> */}
-            <li>
-              
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-gray-300">
-                About
-              </Link>
-            </li>
-            <li>
-              
-            </li>
-          </ul>
+        
+        {/* Desktop Navigation menu */}
+        <nav className="hidden md:flex items-center gap-x-6">
+          <Link href="/" className="hover:text-gray-300">
+            Home
+          </Link>
+          <Link href="/about" className="hover:text-gray-300">
+            User Stories
+          </Link>
         </nav>
-        {/* Social media icons */}
-        <div className="hidden md:block">
+
+        {/* Desktop Icons */}
+        <div className="hidden md:flex items-center gap-x-5">
           <SocialIcons />
+          <Link href="/login" aria-label="Account Login">
+            <FaUserCircle className="h-6 w-6 text-gray-300 hover:text-cyan-400 transition-colors" />
+          </Link>
         </div>
-        {/* Add Mobile Navigation Toggle Here */}
+
+        {/* Mobile Navigation Toggle Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsMobileNavVisible(!isMobileNavVisible)}>
+          <button onClick={() => setIsMobileNavVisible(!isMobileNavVisible)} aria-label="Toggle mobile menu">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -73,46 +62,48 @@ export default function Header() {
             </svg>
           </button>
         </div>
-        <nav
-          id="mobile-nav"
-          className={`md:hidden absolute top-full left-0 right-0 m-8 ${
-            isMobileNavVisible ? "" : "hidden"
-          } bg-gray-800 rounded-lg p-4`}
-        >
-          <ul className="flex flex-col gap-y-4 mt-4">
-            <Link
-              href="/"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
-              onClick={handleNavItemClick}
+
+        {/* Mobile Navigation Menu (Dropdown) */}
+        {isMobileNavVisible && (
+            <nav
+            id="mobile-nav"
+            className="md:hidden absolute top-full left-0 right-0 mx-4 mt-2 bg-gray-800 rounded-lg p-4 shadow-lg"
             >
-              <li>Home</li>
-            </Link>
-            <Link
-              href="/blog"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
-              onClick={handleNavItemClick}
-            >
-              <li>Blog</li>
-            </Link>
-            <Link
-              href="/about"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
-              onClick={handleNavItemClick}
-            >
-              <li>About</li>
-            </Link>
-            {/*<Link href="/streaming" className="hover:text-gray-300 hover:bg-slate-700 p-1" onClick={handleNavItemClick}>
-            <li>Streaming</li> 
-            </Link>*/}
-            <Link
-              href="/contact"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
-              onClick={handleNavItemClick}
-            >
-              <li>Contact</li>
-            </Link>
-          </ul>
-        </nav>
+            <ul className="flex flex-col gap-y-4">
+                <li>
+                    <Link
+                    href="/"
+                    className="block hover:text-gray-300 hover:bg-slate-700 p-2 rounded"
+                    onClick={handleNavItemClick}
+                    >
+                    Home
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                    href="/about"
+                    className="block hover:text-gray-300 hover:bg-slate-700 p-2 rounded"
+                    onClick={handleNavItemClick}
+                    >
+                    User Stories
+                    </Link>
+                </li>
+                 <li>
+                    <Link
+                    href="/login"
+                    className="flex items-center gap-x-3 hover:text-gray-300 hover:bg-slate-700 p-2 rounded"
+                    onClick={handleNavItemClick}
+                    >
+                     <FaUserCircle className="h-5 w-5" />
+                     Account
+                    </Link>
+                </li>
+            </ul>
+            <div className="border-t border-gray-700 mt-4 pt-4">
+                <SocialIcons />
+            </div>
+            </nav>
+        )}
       </div>
     </header>
   );

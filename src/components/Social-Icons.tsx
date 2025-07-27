@@ -4,17 +4,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 export function SocialIcons() {
     return (
       <div className="flex gap-x-4">
-        {/* LinkedIn icon */}
-        {/* <a
-          href="https://www.linkedin.com/in/gowtham-reddy-sodanapalli-401348194/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin className="text-white hover:text-gray-300" />
-        </a> */}
+        
         {/* GitHub icon */}
         <a
-          href="https://github.com/Joserra13/automated-aquarium"
+          href="https://github.com/gowthamde24/Automated-Aquarium-Project.git"
           target="_blank"
           rel="noopener noreferrer"
         >

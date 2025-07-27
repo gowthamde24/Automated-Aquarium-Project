@@ -2,6 +2,12 @@
 
 ![AutomatedAquariumWebsite](graphics/dashboard.png)
 
+# Mobile View
+![Mobile View](graphics/mobileview.png)
+
+# User Stories
+![User Stories](graphics/userstory.png)
+
 # Wiring Diagram
 ![Wiring Diagram](graphics/Wiringdiagram.png)
 The following diagram illustrates the physical connections between the ESP32 microcontroller and the various hardware components, including the temperature sensor, pH sensor, servo motor for the feeder, and the LED light unit. This represents the complete hardware setup for the project.
